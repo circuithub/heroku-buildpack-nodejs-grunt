@@ -148,12 +148,16 @@ SCONS_PACKAGE="http://${S3_BUCKET}.s3.amazonaws.com/scons-${SCONS_VERSION}.tgz"
 VENDORED_NODE="$(mktmpdir node)"
 VENDORED_NPM="$(mktmpdir npm)"
 VENDORED_SCONS="$(mktmpdir scons)"
+VENDORED_XPDF="$(mktmpdir xpdf)"
 
 # download and unpack packages
 echo "-----> Fetching Node.js binaries"
 package_download "nodejs" "${NODE_VERSION}" "${VENDORED_NODE}"
 package_download "npm" "${NPM_VERSION}" "${VENDORED_NPM}"
 package_download "scons" "${SCONS_VERSION}" "${VENDORED_SCONS}"
+
+#custom deps
+curl http://vulcan-andrew.herokuapp.com/output/e2eedf2c-90ed-4d4e-95c6-675458541eef -s -o - | tar xzf - -C ${VENDORED_XPDF} 
 
 # vendor node into the slug
 PATH="$BUILD_DIR/bin:$PATH"
@@ -162,7 +166,7 @@ mkdir -p "$BUILD_DIR/bin"
 cp "$VENDORED_NODE/bin/node" "$BUILD_DIR/bin/node"
 
 # setting up paths for building
-PATH="$VENDORED_SCONS:$VENDORED_NODE/bin:$PATH"
+PATH="$VENDORED_XPDF/bin:$VENDORED_SCONS:$VENDORED_NODE/bin:$PATH"
 INCLUDE_PATH="$VENDORED_NODE/include"
 export CPATH="$INCLUDE_PATH"
 export CPPPATH="$INCLUDE_PATH"

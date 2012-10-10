@@ -187,6 +187,7 @@ echo "export PATH=\"\$HOME/bin:\$HOME/node_modules/.bin:\$PATH\"" > $BUILD_DIR/.
 
 # publish assets 
 echo "-----> Publish assets"
-cd /app
-/app/node_modules/.bin/cake publish.assets
+set -x verbose
+which cake
+$BUILD_DIR/node_modules/.bin/cake publish.assets
 echo "assets published" | indent

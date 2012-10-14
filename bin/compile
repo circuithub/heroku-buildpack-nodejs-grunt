@@ -156,11 +156,11 @@ package_download "nodejs" "${NODE_VERSION}" "${VENDORED_NODE}"
 package_download "npm" "${NPM_VERSION}" "${VENDORED_NPM}"
 package_download "scons" "${SCONS_VERSION}" "${VENDORED_SCONS}"
 
-# vendor xpdf into the slug
-echo "-----> Vendoring xpdf into slug"
-VENDORED_XPDF="$BUILD_DIR/xpdf"
-mkdir -p "$VENDORED_XPDF"
-curl http://vulcan-andrew.herokuapp.com/output/e2eedf2c-90ed-4d4e-95c6-675458541eef -s -o - | tar xzf - -C ${VENDORED_XPDF} 
+# vendor poppler into the slug
+echo "-----> Vendoring poppler into slug"
+VENDORED_POPPLER="$BUILD_DIR/poppler"
+mkdir -p "$VENDORED_POPPLER"
+curl https://dl.dropbox.com/u/10214952/poppler-0.20.5.tar.gz -s -o - | tar xzf - -C ${VENDORED_POPPLER} 
 
 
 # vendor node into the slug
@@ -170,7 +170,7 @@ mkdir -p "$BUILD_DIR/bin"
 cp "$VENDORED_NODE/bin/node" "$BUILD_DIR/bin/node"
 
 # setting up paths for building
-PATH="$VENDORED_XPDF/bin:$VENDORED_SCONS:$VENDORED_NODE/bin:$PATH"
+PATH="$VENDORED_POPPLER/bin:$VENDORED_SCONS:$VENDORED_NODE/bin:$PATH"
 INCLUDE_PATH="$VENDORED_NODE/include"
 export CPATH="$INCLUDE_PATH"
 export CPPPATH="$INCLUDE_PATH"

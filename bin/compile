@@ -161,7 +161,6 @@ echo "-----> Vendoring poppler into slug"
 VENDORED_POPPLER="$BUILD_DIR/poppler"
 mkdir -p "$VENDORED_POPPLER"
 curl https://dl.dropbox.com/u/10214952/poppler-0.20.5.tar.gz -s -o - | tar xzf - -C ${VENDORED_POPPLER} 
-cp -r ${VENDORED_POPPLER}/* /usr
 
 # vendor node into the slug
 PATH="$BUILD_DIR/bin:$PATH"

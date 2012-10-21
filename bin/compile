@@ -176,7 +176,7 @@ export CPPPATH="$INCLUDE_PATH"
 
 # install dependencies with npm
 echo "-----> Installing dependencies with npm"
-ls $CACHE_DIR
+# ls $CACHE_DIR
 # run_npm "cache add $CACHE_DIR"
 run_npm "install --production --fetch-retries 5"
 run_npm "rebuild"

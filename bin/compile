@@ -10,11 +10,9 @@ set -e
 
 
 echo "----> Getting Git commit version"
-COMMIT_SHA = git log -1 --format="%H"
+git log -1 --format="%H"
 
-echo "---> Commit sha"
-echo COMMIT_SHA
-export COMMIT_SHA
+export COMMIT_SHA="xxx"
 
 # clean up leaking environment
 unset GIT_DIR

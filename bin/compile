@@ -8,15 +8,6 @@ set -e
 # set -x
 
 
-
-echo "----> Getting Git commit version"
-git log -1 --format="%H"
-
-git log -1 --format="%H" > $BUILD_DIR/public/commit_hash
-
-# clean up leaking environment
-unset GIT_DIR
-
 # config
 SCONS_VERSION="1.2.0"
 S3_BUCKET="heroku-buildpack-nodejs"
@@ -25,6 +16,15 @@ S3_BUCKET="heroku-buildpack-nodejs"
 BUILD_DIR=$1
 CACHE_DIR=$2
 LP_DIR=`cd $(dirname $0); cd ..; pwd`
+
+
+echo "----> Getting Git commit version"
+git log -1 --format="%H"
+
+git log -1 --format="%H" > $BUILD_DIR/public/commit_hash
+
+# clean up leaking environment
+unset GIT_DIR
 
 function error() {
   echo " !     $*" >&2

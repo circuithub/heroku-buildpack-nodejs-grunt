@@ -7,6 +7,9 @@ set -e
 # debug
 # set -x
 
+echo "----> Getting Git commit version"
+git log -1 --format="%H"
+
 # clean up leaking environment
 unset GIT_DIR
 
@@ -191,6 +194,3 @@ echo "-----> Publish assets"
 cd $BUILD_DIR
 $VENDORED_NODE/bin/node $BUILD_DIR/run_cake.js publish.assets
 echo "assets published" | indent
-
-echo "----> Getting Git commit version"
-git log -1 --format="%H"

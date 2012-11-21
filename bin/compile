@@ -13,7 +13,7 @@ echo "----> Getting Git commit version"
 COMMIT_SHA = git log -1 --format="%H"
 
 echo "---> Commit sha"
-eacho COMMIT_SHA
+echo COMMIT_SHA
 export COMMIT_SHA
 
 # clean up leaking environment

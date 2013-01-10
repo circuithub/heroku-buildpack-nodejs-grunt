@@ -167,7 +167,7 @@ package_download "scons" "${SCONS_VERSION}" "${VENDORED_SCONS}"
 echo "-----> Vendoring poppler into slug"
 VENDORED_POPPLER="$BUILD_DIR/poppler"
 mkdir -p "$VENDORED_POPPLER"
-curl https://dl.dropbox.com/u/10214952/poppler-0.20.5.tar.gz -s -o - | tar xzf - -C ${VENDORED_POPPLER} 
+curl https://s3.amazonaws.com/circuithub-build/poppler-0.20.5.tar.gz -s -o - | tar xzf - -C ${VENDORED_POPPLER} 
 
 # vendor node into the slug
 PATH="$BUILD_DIR/bin:$PATH"

@@ -220,6 +220,12 @@ echo "-----> Building runtime environment"
 mkdir -p $BUILD_DIR/.profile.d
 echo "export PATH=\"\$HOME/bin:\$HOME/node_modules/.bin:\$HOME/node_modules/coffee-script/bin:\$PATH\"" > $BUILD_DIR/.profile.d/nodejs.sh
 
+# run tests 
+echo "-----> Running tests"
+cd $BUILD_DIR
+$VENDORED_NODE/bin/node $BUILD_DIR/run_cake.js db.sync.test --DB_NAME uniplex-test
+$VENDORED_NODE/bin/node $BUILD_DIR/run_cake.js test --DB_NAME uniplex-test
+
 # publish assets 
 echo "-----> Publish assets"
 cd $BUILD_DIR

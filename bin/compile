@@ -21,7 +21,7 @@ LP_DIR=`cd $(dirname $0); cd ..; pwd`
 echo "----> Getting Git commit version"
 git log -1 --format="%H"
 
-git log -1 --format="%H" > $BUILD_DIR/public/commit_hash
+git log -1 --format="%H" > $BUILD_DIR/server/public/commit_hash
 
 # clean up leaking environment
 unset GIT_DIR

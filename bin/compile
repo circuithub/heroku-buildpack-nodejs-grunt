@@ -203,10 +203,10 @@ if [ -d $CACHE_STORE_DIR ]; then
 fi
 
 # install dependencies with npm (CircuitHub: retry 5 times, don't rebuild)
-echo "-----> Installing dependencies with npm"
-run_npm "install --production --fetch-retries 5"
+# echo "-----> Installing dependencies with npm"
+# run_npm "install --production --fetch-retries 5"
 # run_npm "rebuild"
-echo "Dependencies installed" | indent
+# echo "Dependencies installed" | indent
 
 # repack cache with new assets
 if [ -d $CACHE_TARGET_DIR ]; then
